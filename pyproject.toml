@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "weather-get"
+version = "0.0.1"
+description = "CLI utility to fetch the latest weather report"
+authors = ["daniel <danbaron63@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+requests = "^2.26.0"
+PyYAML = "^6.0"
+
+[tool.poetry.scripts]
+app = "weather_get.weather_get:main"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.5"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
