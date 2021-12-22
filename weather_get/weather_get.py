@@ -1,6 +1,6 @@
-import requests
 import yaml
-import json
+from weather_get import WeatherApi
+from pprint import pprint
 
 
 CONFIG = "config/config.yml"
@@ -16,18 +16,9 @@ def main():
     url = api_config["url"]
     api_version = api_config["version"]
 
-    response = requests.get(
-        url=f"https://{url}/{api_version}/current.json",
-        params={
-            "key": api_key,
-            "q": "London",
-            "days": 1,
-            "api": "no",
-            "alerts": "no"
-        }
-    )
-
-    print(json.dumps(response.json(), indent=2))
+    api = WeatherApi(url=f"{url}/{api_version}", api_key=api_key)
+    pprint(api.get_current(locale="London"))
+    pprint(api.get_forecast(locale="London", days=3))
 
 
 if __name__ == "__main__":
